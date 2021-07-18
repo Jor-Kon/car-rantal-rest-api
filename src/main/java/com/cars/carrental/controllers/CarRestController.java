@@ -32,7 +32,7 @@ public class CarRestController {
         return ObjectMapperUtils.map(carService.findByBrand(brand), Car.class);
     }
 
-    @PostMapping(value = "/add")
+    @PostMapping(path = "/add", consumes = "application/json", produces = "application/json")
     public ResponseEntity<?> addCar(@RequestBody Car car) {
         carService.saveOrUpdate(ObjectMapperUtils.map(car, Car.class));
         return new ResponseEntity("Car added", HttpStatus.CREATED);
@@ -48,7 +48,7 @@ public class CarRestController {
         return new ResponseEntity("Car does not exist in database", HttpStatus.CONFLICT);
     }
 
-    @PatchMapping(value = "/edit/{id}")
+    @PutMapping(value = "/edit/{id}")
     public ResponseEntity<?> editCar(@PathVariable("id") String id, @RequestBody Car editedCar) {
         if (carService.exists(id)) {
             Car car = ObjectMapperUtils.map(carService.findById(id).get(), Car.class);
@@ -61,13 +61,13 @@ public class CarRestController {
             car.setYearOfProduction(editedCar.getYearOfProduction());
             car.setRentalCost(editedCar.getRentalCost());
             carService.saveOrUpdate(ObjectMapperUtils.map(car, Car.class));
-            return new ResponseEntity("Car edited", HttpStatus.CREATED);
+            return new ResponseEntity("Car edited", HttpStatus.OK);
         }
         else
         return new ResponseEntity("Car does not exist in database", HttpStatus.CONFLICT);
     }
 
-    @PatchMapping(value = "/rent/{id}")
+    @PutMapping(value = "/rent/{id}")
     public ResponseEntity<?> rentCar(@PathVariable("id") String id) {
         if (carService.exists(id)) {
             Car car = ObjectMapperUtils.map(carService.findById(id).get(), Car.class);
@@ -84,7 +84,7 @@ public class CarRestController {
         return new ResponseEntity("Car does not exist in database", HttpStatus.CONFLICT);
     }
 
-    @PatchMapping(value = "/return/{id}")
+    @PutMapping(value = "/return/{id}")
     public ResponseEntity<?> returnCar(@PathVariable("id") String id) {
         if (carService.exists(id)) {
             Car car = ObjectMapperUtils.map(carService.findById(id).get(), Car.class);

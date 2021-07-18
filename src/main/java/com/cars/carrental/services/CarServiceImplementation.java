@@ -38,6 +38,11 @@ public class CarServiceImplementation implements CarService {
     }
 
     @Override
+    public void deleteAll() {
+        carRepository.deleteAll();
+    }
+
+    @Override
     public Car findByBrand(String brand) {
         return carRepository.findByBrand(brand);
     }

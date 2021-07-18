@@ -14,6 +14,8 @@ public interface CarService {
 
     void delete(String id);
 
+    void deleteAll();
+
     Car findByBrand(String brand);
 
     boolean exists(String id);
