@@ -2,9 +2,7 @@ package com.cars.carrental.services;
 
 import com.cars.carrental.models.Car;
 import com.cars.carrental.repositories.CarRepository;
-import com.cars.carrental.services.CarService;
 
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
