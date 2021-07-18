@@ -1,6 +1,6 @@
-import java.lang.invoke.InjectedProfile;
+package com.cars.carrental.models;
 
-import org.springframework.data.annorarion.Id;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
@@ -10,14 +10,14 @@ public class Car {
     private String id;
     private String brand;
     private String model;
-    private String yearOfProduction;
+    private int yearOfProduction;
     private float rentalCost;
     private boolean isRented;
 
     public Car() {
     }
 
-    public Car(String brand, String model, String yearOfProduction, float rentalCost) {
+    public Car(String brand, String model, int yearOfProduction, float rentalCost) {
         this.brand = brand;
         this.model = model;
         this.yearOfProduction = yearOfProduction;
@@ -49,11 +49,11 @@ public class Car {
         this.model = model;
     }
 
-    public String getYearOfProduction() {
+    public int getYearOfProduction() {
         return yearOfProduction;
     }
 
-    public void setYearOfProduction(String yearOfProduction) {
+    public void setYearOfProduction(int yearOfProduction) {
         this.yearOfProduction = yearOfProduction;
     }
 
